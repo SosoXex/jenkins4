@@ -1,2 +1,2 @@
 FROM tomcat9
-COPY ./target/*.war /usr/local/tomcat/webapps/
+COPY ./build/target/*.war /usr/local/tomcat/webapps/
