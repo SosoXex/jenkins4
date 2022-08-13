@@ -7,25 +7,25 @@
 </head>
 <body>
 	<h1>WAR Web Service V.6.0 with publisher and builder instructions</h1>
-	<h2>Publisher</>
-	<p>rm -rf /tmp/srv && mkdir -p /tmp/srv && cd /tmp/srv
-docker rm app -f
-ghhost='172.31.23.200:8123'
-docker rmi $ghhost/app:$ghvar -f
-docker login $ghhost -u $ghuser -p $ghpass
-docker pull $ghhost/app:$ghvar
-docker run --name app -d -p 8080:8080 $ghhost/app:$ghvar</p>
-<h2>Builder</>
-	<p>rm -rf /tmp/build && mkdir -p /tmp/build && cd /tmp
-git clone https://github.com/SosoXex/jenkins4.git build
-cd build
-git checkout $ghvar <-- here we as well could use <b>reset --hard</b>
-mvn package -DbuildDirectory=$PWD
-ghhost='172.31.23.200:8123'
-docker build -t app:$ghvar .
-docker login $ghhost -u $ghuser -p $ghpass
-docker tag app:$ghvar $ghhost/app:$ghvar
-docker push $ghhost/app:$ghvar</p>
+	<h2>Publisher</h2>
+	<p>rm -rf /tmp/srv && mkdir -p /tmp/srv && cd /tmp/srv</p>
+<p>docker rm app -f</p>
+<p>ghhost='172.31.23.200:8123'</p>
+<p>docker rmi $ghhost/app:$ghvar -f</p>
+<p>docker login $ghhost -u $ghuser -p $ghpass</p>
+<p>docker pull $ghhost/app:$ghvar</p>
+<p>docker run --name app -d -p 8080:8080 $ghhost/app:$ghvar</p>
+<h2>Builder</h2>
+	<p>rm -rf /tmp/build && mkdir -p /tmp/build && cd /tmp</p>
+<p>git clone https://github.com/SosoXex/jenkins4.git build</p>
+<p>cd build</p>
+<p>git checkout $ghvar <-- here we as well could use <b>reset --hard</b>
+<p>mvn package -DbuildDirectory=$PWD</p>
+<p>ghhost='172.31.23.200:8123'</p>
+<p>docker build -t app:$ghvar .</p>
+<p>docker login $ghhost -u $ghuser -p $ghpass</p>
+<p>docker tag app:$ghvar $ghhost/app:$ghvar</p>
+<p>docker push $ghhost/app:$ghvar</p>
 	<ul>
 		<li><a href="http://localhost:8080/wwp-1.0.0/webapi/service">http://localhost:8080/wwp-1.0.0/webapi/service</a></li>
 		<li><a href="http://localhost:8080/wwp-1.0.0/webapi/service/hello">http://localhost:8080/wwp-1.0.0/webapi/service/hello</a></li>
